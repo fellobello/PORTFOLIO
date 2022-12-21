@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Variable Results</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+    <h1>Variable Results</h1>
+    <div class="d-flex">
+        <h3>House: <div id="var1" class="p-2"></div></h3>
+        <h3>Zodiac: <div id="var2" class="p-2"></div></h3>
+        <h3>Planet: <div id="var3" class="p-2"></div></h3>
+    </div>
+
+    <script>
+    
+// Define Lists of Zodiacs and Planets
+
+zodiac_signs = ["Aries", "Taurus", "Gemini", "Cancer", "Leo", "Virgo", "Libra", "Scorpio", "Sagittarius", "Capricorn", "Aquarius", "Pisces"];
+
+planets = ["Sun", "Moon", "Mercury", "Venus", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune", "Pluto", "North Node", "South Node"];
+    
+// Define function to roll 3 dice
+    function fortune() {
+    
+    
+// Define a random number generator between 1 and 12
+
+function rollDice() {
+  return Math.floor(Math.random() * 12) + 1;
+}
+
+// Roll the dice three times and assign values to HTML
+
+var dice1 = rollDice();
+var dice2 = zodiac_signs[rollDice() - 1];
+var dice3 = planets[rollDice() - 1];
+
+        document.getElementById("var1").innerHTML = dice1;
+        document.getElementById("var2").innerHTML = dice2;
+        document.getElementById("var3").innerHTML = dice3;
+}
+
+setInterval(fortune, 5000);
+
+    </script>
+</body>
+</html>
