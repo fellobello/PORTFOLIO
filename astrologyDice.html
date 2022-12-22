@@ -4,18 +4,22 @@
     <title>Astrological Dice</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
-<body>
-    <h1 style="font-family: Verdana, sans-serif; border: 15px ridge rgba(28,110,164,0.39);">Astrological Dice</h1>
-    <div style="background-color: rgb(238, 234, 182)" class="d-flex">
-        <h3>House: <div id="var1" class="p-2"></div></h3>
-        <h3>Zodiac: <div id="var2" class="p-2"></div></h3>
-        <h3>Planet: <div id="var3" class="p-2"></div></h3>
+<body class="sky">
+    <h1 style="font-family: Verdana, sans-serif; border: 8px groove rgba(28,110,164,0.57); text-align: center; padding: 10px; background-color: rgba(238, 234, 182, 1); box-sizing: border-box; outline: white solid 2px;">Astrological Dice</h1>
+  <div>  
+    <div style="display: flex; justify-content: space-around; margin-bottom: 8em; margin-top: 8em;">
+      <h3 class="result">House: <div id="var1">&nbsp;</div></h3>
+        <h3 class="result">Zodiac: <div id="var2">&nbsp;</div></h3>
+        <h3 class="result">Planet: <div id="var3">&nbsp;</div></h3>
     </div>
-
-    <button id="reroll-button" class="btn btn-primary">
+    
+    <div style="display: flex; justify-content: center;">
+      <button id="reroll-button" class="myButton h3" style="color: black;">
         Reroll
-    </button>
-
+      </button>
+    </div>
+  </div>
+  
     <script>
     
     // Define Lists of Zodiacs and Planets
