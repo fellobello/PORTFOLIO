@@ -1,0 +1,47 @@
+h3 {
+  color: black;
+}
+
+.sky {
+  background: -webkit-linear-gradient(to top, #283E51, #0A2342);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to top, #283E51, #0A2342); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: -olinear-gradient(to top, #283E51, #0A2342); 
+  height: 100vh;
+}
+
+.result {
+  box-sizing: border-box;
+  outline: white solid 2px;
+  box-shadow: 0px 1px 0px 0px #1c1b18;
+  margin: 10px; 
+  width: 25%; 
+  text-align: center;
+  display: inline-block;
+  background-color: 
+    rgba(238, 234, 182, 1); 
+  padding: 10px; 
+  border: 8px groove 
+    rgba(28,110,164,0.57);
+}
+
+.myButton {
+	box-sizing: border-box;
+  outline: white solid 2px;
+  box-shadow: 0px 1px 0px 0px #1c1b18;
+  margin: auto;
+  background-color: 
+    rgba(238, 234, 182, 1);
+	border: 8px groove 
+    rgba(28,110,164,0.57);
+	display:inline-block;
+	cursor:pointer;
+	color:#505739;
+	padding:12px 16px;
+}
+.myButton:hover {
+	background-color: rgba(238, 234, 182, 0.5);
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
