@@ -1,0 +1,120 @@
+import os
+import openai
+from dict import character, print_character
+
+openai.api_key = "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"
+
+characters = []
+
+# Prompt the user for the number of game players
+num_players = input("Enter the number of game players: ")
+
+# Convert num_players to an integer
+num_players = int(num_players)
+
+npcs = 4 - num_players
+for i in range(1, npcs + 1):
+    
+    prompt1 = 'Could you create a filled out python dictionary with double quotes and proper formatting for a fantastical fictional level 1 D&D charter formatted thusly "{Race: '', Class: '', Ability Scores: {Strength: 0, Dexterity: 0, Constitution: 0, Intelligence: 0, Wisdom: 0, Charisma: 0}, Skills: {}, Feats: [], Background: '', Alignment: '', Appearance: {Gender: '', Age: 0, Height: 0, Weight: 0, Physical Characteristics: ''}, Personality: '', Name: '', Backstory: '', Goals: '', Flaws: '', Relationships: {}, Inventory: {}, Currency: {}, Reputation: ''}" ?'
+
+    # Call the Completion model
+    response = openai.Completion.create(
+    model="text-davinci-003",
+    prompt=prompt1,
+    temperature=0.9,
+    max_tokens=500,
+    top_p=1,
+    frequency_penalty=0.0,
+    presence_penalty=0.0,
+    )
+
+    text = response['choices'][0]['text']
+    print(text)
+    characters.append(text)
+    #print_character(characters[i - 1])
+    
+
+def create_character():
+    # Create a new new_character dictionary
+    new_character = character.copy()
+
+    # Prompt the user for new_character trait information and fill in the new new_character dictionary
+    new_character["Race"] = input("Enter the new character's race: ")
+    new_character["Class"] = input("Enter the character's class: ")
+
+    # Skills will need to be entered separately
+    skill = input("Enter a skill name: ")
+    while skill:
+        new_character["Skills"][skill] = int(input("Enter the character's proficiency in this skill (0-5): "))
+        skill = input("Enter another skill name (or press Enter to finish): ")
+
+    new_character["Feats"] = input("Enter the character's feats (separated by commas): ").split(", ")
+    new_character["Background"] = input("Enter the character's background: ")
+    new_character["Alignment"] = input("Enter the character's alignment: ")
+
+    new_character["Appearance"]["Gender"] = input("Enter the character's gender: ")
+
+
+    new_character["Appearance"]["Age"] = int(input("Enter the character's age: "))
+    new_character["Appearance"]["Height"] = int(input("Enter the character's height (in inches): "))
+    new_character["Appearance"]["Weight"] = int(input("Enter the character's weight (in pounds): "))
+    new_character["Appearance"]["Physical new_characteristics"] = input("Enter the character's physical characteristics: ")
+
+    new_character["Personality"] = input("Enter the character's personality: ")
+    new_character["Name"] = input("Enter the character's name: ")
+    new_character["Backstory"] = input("Enter the character's backstory: ")
+    new_character["Goals"] = input("Enter the character's goals: ")
+    new_character["Flaws"] = input("Enter the character's flaws: ")
+
+    # Relationships will need to be entered separately
+    relationship_type = input("Enter a type of relationship (e.g. Allies, Enemies, Family): ")
+    while relationship_type:
+        new_character["Relationships"][relationship_type] = input("Enter the character's relationships of this type (separated by commas): ").split(", ")
+        relationship_type = input("Enter another type of relationship (or press Enter to finish): ")
+
+    # Inventory will need to be entered separately
+    item = input("Enter an item in the character's inventory: ")
+    while item:
+        category = input("Enter the category for this item (e.g. Weapons, Armor, Gear): ")
+        if category not in new_character["Inventory"]:
+            new_character["Inventory"][category] = []
+        new_character["Inventory"][category].append(item)
+        item = input("Enter another item in the character's inventory (or press Enter to finish): ")
+
+    # Currency will need to be entered separately
+    currency_type = input("Enter a type of currency (e.g. Coins, Gems): ")
+    while currency_type:
+        new_character["Currency"][currency_type] = input("Enter the character's amount of this type of currency: ")
+        currency_type = input("Enter another type of currency (or press Enter to finish): ")
+
+    new_character["Reputation"] = input("Enter the character's reputation: ")
+
+    # Add the new character dictionary to the list of characters
+    characters.append(new_character)
+
+    # Return the list of characters
+    return characters
+
+for i in range(1, num_players + 1):
+    characters.append(create_character())
+
+for i in range(1, 4):
+    print_character(characters[i - 1])
+
+
+
+prompt2 = "Create a fantasy set up for a D&D game as if you were a creative dungeon master?"
+
+
+response = openai.Completion.create(
+  model="text-davinci-003",
+  prompt=prompt2,
+  temperature=0.8,
+  max_tokens=250,
+  top_p=1,
+  frequency_penalty=0.0,
+  presence_penalty=0.0,
+)
+
+text = response['choices'][0]['text']
+print(text)
